@@ -14,7 +14,7 @@ MAINTAINER Hobson Lane
 
 # Set env variables used in this Dockerfile (add a unique prefix, such as AICHAT)
 # Local directory with project source
-ENV AICHAT_SRC=code/website
+ENV AICHAT_SRC=code/aichat
 # Directory in container for all project files
 ENV AICHAT_SRVHOME=/srv
 # Directory in container for project source files
@@ -40,7 +40,7 @@ VOLUME ["$AICHAT_SRVHOME/media/", "$AICHAT_SRVHOME/logs/"]
 COPY $AICHAT_SRC $AICHAT_SRVPROJ
 
 # Install Python dependencies
-RUN pip install -r $AICHAT_SRVPROJ/requirement.txt
+RUN pip install -r $AICHAT_SRVPROJ/requirement-base.txt
 
 # Port to expose
 EXPOSE 8000
